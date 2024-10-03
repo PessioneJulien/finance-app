@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         // width must be adaptive to the text length
         minWidth: Dimensions.get('window').width * 0.23,
 
-        height: Dimensions.get('window').width * 0.08,
+        height: Dimensions.get('window').width * 0.1,
         backgroundColor: 'white',
         borderRadius: 100,
         padding: 12,

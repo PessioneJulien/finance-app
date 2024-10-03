@@ -26,7 +26,7 @@ const CustomButton: React.FC<ButtonProps> = ({ onPress, text, icon, style, textS
 // Bouton circulaire
 export const CircleButton: React.FC<ButtonProps> = (props) => {
     const { width } = useWindowDimensions();
-    const size = width * 0.08; // 20% de la largeur de l'écran pour le bouton
+    const size = width * 0.1; // 20% de la largeur de l'écran pour le bouton
     return <CustomButton {...props} style={[{ width: size, height: size, borderRadius: size / 2 }]} />;
 };
 

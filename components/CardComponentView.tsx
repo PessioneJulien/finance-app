@@ -1,11 +1,12 @@
 import React, { PureComponent, ReactNode } from 'react';
-import { Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { CircleButton } from './CustomButtons';
 import { CustomDropDown } from './CustomDropdown';
 import { Ionicons } from '@expo/vector-icons';
 import { Blurred } from './BlurComponent';
+import { LinearGradient } from 'expo-linear-gradient';
 // generate a random number
 const generateRandomNumber = () => {
     return Math.floor(Math.random() * 100000).toString();
@@ -80,7 +81,11 @@ export class CardComponentView extends PureComponent<CardComponentViewProps, Car
         const { isVisible, balance, currencyList, currencyValue } = this.state;
 
         return (
-            <ThemedView style={{ padding: 16, margin: 16, borderRadius: 16, backgroundColor: '#AAA' }}>
+            <LinearGradient style={{ padding: 16, margin: 16, borderRadius: 16, backgroundColor: '#AAA' }}
+                colors={['#9babbb', '#ffffff']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+            >
                 {/* Bouton avec l'icône qui change en fonction de la visibilité */}
                 <ThemedView style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'transparent' }}>
                     <ThemedText style={{ fontSize: 16, color: '#000' }}>
@@ -107,11 +112,9 @@ export class CardComponentView extends PureComponent<CardComponentViewProps, Car
                         />
                     </ThemedView>
                 </ThemedView>
-
                 {/* Texte qui devient flou ou visible en fonction de isVisible */}
-
-                <Blurred intensity={isVisible ? 0 : 10} tint="light">
-                    <ThemedText style={{ fontSize: 24, fontWeight: 'bold' }}>
+                <Blurred intensity={isVisible ? 0 : 15} tint="light">
+                    <ThemedText style={{ fontSize: 24, fontWeight: 'bold', color: '#000' }}>
                         {isVisible ? balance : generateRandomNumber()}
                     </ThemedText>
                 </Blurred>
@@ -120,9 +123,19 @@ export class CardComponentView extends PureComponent<CardComponentViewProps, Car
                 <ThemedText style={{ fontSize: 16, opacity: isVisible ? 1 : 0.2 }}>
                     Card Description
                 </ThemedText>
-            </ThemedView>
+            </LinearGradient >
         );
     }
 }
+const styles = StyleSheet.create({
+    background: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        height: "100%",
+        width: "100%",
+    },
+});
 
 export default CardComponentView;
